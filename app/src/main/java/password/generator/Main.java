@@ -1,3 +1,5 @@
+package password.generator;
+
 import java.util.Scanner;
 
 public class Main {

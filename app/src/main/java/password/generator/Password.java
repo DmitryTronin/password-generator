@@ -1,3 +1,4 @@
+package password.generator;
 
 public class Password {
     String Value;

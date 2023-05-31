@@ -1,3 +1,5 @@
+package password.generator;
+
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -14,7 +16,7 @@ public class Generator {
     }
 
     public void mainLoop() {
-        System.out.println("Welcome to Ziz Password Services :)");
+        System.out.println("Welcome to Password Services");
         printMenu();
 
         String userOption = "-1";
@@ -46,7 +48,7 @@ public class Generator {
         }
     }
 
-    private Password GeneratePassword(int length) {
+    protected Password GeneratePassword(int length) {
         final StringBuilder pass = new StringBuilder("");
 
         final int alphabetLength = alphabet.getAlphabet().length();
@@ -63,19 +65,23 @@ public class Generator {
         return new Password(pass.toString());
     }
 
+
     private void printUsefulInfo() {
-        System.out.println();
-        System.out.println("Use a minimum password length of 8 or more characters if permitted");
-        System.out.println("Include lowercase and uppercase alphabetic characters, numbers and symbols if permitted");
-        System.out.println("Generate passwords randomly where feasible");
-        System.out.println("Avoid using the same password twice (e.g., across multiple user accounts and/or software systems)");
-        System.out.println("Avoid character repetition, keyboard patterns, dictionary words, letter or number sequences," +
-                "\nusernames, relative or pet names, romantic links (current or past) " +
-                "and biographical information (e.g., ID numbers, ancestors' names or dates).");
-        System.out.println("Avoid using information that the user's colleagues and/or " +
-                "acquaintances might know to be associated with the user");
-        System.out.println("Do not use passwords which consist wholly of any simple combination of the aforementioned weak components");
+        StringBuilder usefulInfo = new StringBuilder();
+        usefulInfo.append("\nUse a minimum password length of 8 or more characters if permitted.\n")
+                  .append("Include lowercase and uppercase alphabetic characters, numbers and symbols if permitted.\n")
+                  .append("Generate passwords randomly where feasible.\n")
+                  .append("Avoid using the same password twice (e.g., across multiple user accounts and/or software systems).\n")
+                  .append("Avoid character repetition, keyboard patterns, dictionary words, letter or number sequences,\n")
+                  .append("usernames, relative or pet names, romantic links (current or past) ")
+                  .append("and biographical information (e.g., ID numbers, ancestors' names or dates).\n")
+                  .append("Avoid using information that the user's colleagues and/or ")
+                  .append("acquaintances might know to be associated with the user.\n")
+                  .append("Do not use passwords which consist wholly of any simple combination of the aforementioned weak components.\n");
+
+        System.out.println(usefulInfo.toString());
     }
+    
 
     private void requestPassword() {
         boolean IncludeUpper = false;
@@ -146,7 +152,7 @@ public class Generator {
     private boolean isInclude(String Input) {
         if (Input.equalsIgnoreCase("yes")) {
             return true;
-        } 
+        }
         else {
             return false;
         }
