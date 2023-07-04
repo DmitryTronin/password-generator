@@ -1,6 +1,5 @@
 package password.generator;
 
-
 public class Password {
     String Value;
     int Length;
@@ -16,16 +15,16 @@ public class Password {
         int val;
 
         // Char is Uppercase Letter
-        if ((int) C >= 65 && (int) C <= 90)
+        if (Character.isUpperCase(C))
             val = 1;
 
-        // Char is Lowercase Letter
-        else if ((int) C >= 97 && (int) C <= 122) {
+            // Char is Lowercase Letter
+        else if (Character.isLowerCase(C)) {
             val = 2;
         }
 
         // Char is Digit
-        else if ((int) C >= 60 && (int) C <= 71) {
+        else if (Character.isDigit(C)) {
             val = 3;
         }
 
@@ -38,7 +37,15 @@ public class Password {
     }
 
 
-
+    /**
+     * This method evaluates the strength of the stored password and returns an integer score accordingly.
+     * The scoring system relies on the usage of different character-types and length of the password.
+     * All four types of characters (upper case, lower case, digit, and special symbols) contribute to the score.
+     * Also, the length of the password matters: strings of 8 and 16 characters increment the score as well.
+     * Higher score implies stronger password.
+     *
+     * @return Score - an integer that represents password strength, potential maximum is 6.
+     */
     public int PasswordStrength() {
         String s = this.Value;
         boolean UsedUpper = false;
