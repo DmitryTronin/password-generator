@@ -1,5 +1,6 @@
 package password.generator;
 
+import java.util.InputMismatchException;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -25,6 +26,14 @@ public class Generator {
 
             userOption = keyboard.next();
 
+            try {
+                userOption = keyboard.nextLine().trim();
+            } catch (Exception e) {
+                System.err.println("Sorry, can't parse input. Select one of the available commands.");
+                printMenu();
+                continue;
+            }
+
             switch (userOption) {
                 case "1" -> {
                     requestPassword();
@@ -49,8 +58,10 @@ public class Generator {
     }
 
     protected Password GeneratePassword(int length) {
-        final StringBuilder pass = new StringBuilder("");
-
+        if (length <= 0) {
+            throw new IllegalArgumentException("Password length must be greater than 0");
+        }
+        final StringBuilder pass = new StringBuilder();
         final int alphabetLength = alphabet.getAlphabet().length();
 
         int max = alphabetLength - 1;
@@ -60,6 +71,10 @@ public class Generator {
         for (int i = 0; i < length; i++) {
             int index = (int) (Math.random() * range) + min;
             pass.append(alphabet.getAlphabet().charAt(index));
+        }
+
+        if (pass.length() != length) {
+            throw new RuntimeException("Generated password length does not match the expected length.");
         }
 
         return new Password(pass.toString());
@@ -141,21 +156,26 @@ public class Generator {
         } while (correctParams);
 
         System.out.println("Great! Now enter the length of the password");
-        int length = keyboard.nextInt();
+        int length = 0;
+        while(true){
+            try {
+                length = keyboard.nextInt();
+                break;
+            } catch (InputMismatchException e) {
+                keyboard.nextLine();  // to consume the incorrect token
+                System.out.println("Invalid input. Please enter an integer for the password length.");
+            }
+        }
+        keyboard.nextLine();
 
         final Generator generator = new Generator(IncludeUpper, IncludeLower, IncludeNum, IncludeSym);
         final Password password = generator.GeneratePassword(length);
 
-        System.err.println("Your generated password -> " + password);
+        System.out.println("Your generated password -> " + password);
     }
 
     private boolean isInclude(String Input) {
-        if (Input.equalsIgnoreCase("yes")) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return Input.equalsIgnoreCase("yes");
     }
 
     private void PasswordRequestError(String i) {

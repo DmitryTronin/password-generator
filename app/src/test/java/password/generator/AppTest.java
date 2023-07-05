@@ -29,6 +29,7 @@ class AppTest {
         String[] lines = baos.toString().split(System.lineSeparator());
         String actual = lines[lines.length-1];
 
+
         // checkout output
         Assertions.assertEquals(expected,actual);
     }
