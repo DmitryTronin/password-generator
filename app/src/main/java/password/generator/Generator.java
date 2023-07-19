@@ -5,7 +5,9 @@ import java.util.Scanner;
 
 public class Generator {
     Alphabet alphabet;
+
     public static Scanner keyboard;
+
 
     public Generator(Scanner scanner) {
         keyboard = scanner;
@@ -13,6 +15,7 @@ public class Generator {
 
     public Generator(boolean IncludeUpper, boolean IncludeLower, boolean IncludeNum, boolean IncludeSym) {
         alphabet = new Alphabet(IncludeUpper, IncludeLower, IncludeNum, IncludeSym);
+        keyboard = new Scanner(System.in);
     }
 
     public void mainLoop() {
@@ -41,7 +44,7 @@ public class Generator {
                 case "4" -> printQuitMessage();
                 default -> {
                     System.out.println();
-                    System.out.println("Kindly select one of the available commands");
+                    System.out.println("Please select one of the available commands");
                     printMenu();
                 }
             }
