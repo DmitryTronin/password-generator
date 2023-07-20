@@ -47,14 +47,25 @@ public class Generator {
                     printUsefulInfo();
                     printMenu();
                 }
-                case "4" -> printQuitMessage();
+                case "4" -> {
+                    giveRandomPassword();
+                    printMenu();
+                }
+                case "5" -> printQuitMessage();
+
                 default -> {
                     System.out.println();
-                    System.out.println("Kindly select one of the available commands");
+                    System.out.println("Please select one of the available commands");
                     printMenu();
+
+
                 }
             }
         }
+    }
+
+    private void giveRandomPassword() {
+        // TODO add method
     }
 
     protected Password GeneratePassword(int length) {
