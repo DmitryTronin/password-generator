@@ -41,7 +41,9 @@ public class Generator {
                     printUsefulInfo();
                     printMenu();
                 }
-                case "4" -> printQuitMessage();
+                case "4" -> {}
+                case "5" -> printQuitMessage();
+
                 default -> {
                     System.out.println();
                     System.out.println("Please select one of the available commands");
@@ -70,21 +72,19 @@ public class Generator {
 
 
     private void printUsefulInfo() {
-        StringBuilder usefulInfo = new StringBuilder();
-        usefulInfo.append("\nUse a minimum password length of 8 or more characters if permitted.\n")
-                  .append("Include lowercase and uppercase alphabetic characters, numbers and symbols if permitted.\n")
-                  .append("Generate passwords randomly where feasible.\n")
-                  .append("Avoid using the same password twice (e.g., across multiple user accounts and/or software systems).\n")
-                  .append("Avoid character repetition, keyboard patterns, dictionary words, letter or number sequences,\n")
-                  .append("usernames, relative or pet names, romantic links (current or past) ")
-                  .append("and biographical information (e.g., ID numbers, ancestors' names or dates).\n")
-                  .append("Avoid using information that the user's colleagues and/or ")
-                  .append("acquaintances might know to be associated with the user.\n")
-                  .append("Do not use passwords which consist wholly of any simple combination of the aforementioned weak components.\n");
+        String usefulInfo = """
+                Use a minimum password length of 8 or more characters if permitted.
+                Include lowercase and uppercase alphabetic characters, numbers and symbols if permitted.
+                Generate passwords randomly where feasible.
+                Avoid using the same password twice (e.g., across multiple user accounts and/or software systems).
+                Avoid character repetition, keyboard patterns, dictionary words, letter or number sequences,
+                usernames, relative or pet names, romantic links (current or past) and biographical information (e.g., ID numbers, ancestors' names or dates).
+                Avoid using information that the user's colleagues and/or acquaintances might know to be associated with the user.
+                Do not use passwords which consist wholly of any simple combination of the aforementioned weak components.
+                """;
 
-        System.out.println(usefulInfo.toString());
+        System.out.println(usefulInfo);
     }
-    
 
     private void requestPassword() {
         boolean IncludeUpper = false;
@@ -153,12 +153,7 @@ public class Generator {
     }
 
     private boolean isInclude(String Input) {
-        if (Input.equalsIgnoreCase("yes")) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return Input.equalsIgnoreCase("yes");
     }
 
     private void PasswordRequestError(String i) {
