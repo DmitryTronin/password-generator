@@ -8,11 +8,6 @@ public class Password {
     int Length;
 
 
-    public Password(String s) {
-        Value = s;
-        Length = s.length();
-    }
-
 
     public int CharType(char C) {
         int val;
