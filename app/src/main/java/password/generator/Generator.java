@@ -103,14 +103,6 @@ public class Generator {
             correctParams = false;
 
             do {
-                System.out.println("Do you want Lowercase letters \"abcd...\" to be used? ");
-                input = keyboard.next();
-                PasswordRequestError(input);
-            } while (!input.equalsIgnoreCase("yes") && !input.equalsIgnoreCase("no"));
-
-            if (isInclude(input)) IncludeLower = true;
-
-            do {
                 System.out.println("Do you want Uppercase letters \"ABCD...\" to be used? ");
                 input = keyboard.next();
                 PasswordRequestError(input);
