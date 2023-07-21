@@ -1,4 +1,4 @@
-package password.generator;
+package acme;
 
 import java.util.Scanner;
 

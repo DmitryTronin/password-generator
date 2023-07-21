@@ -3,10 +3,10 @@ package password.generator;
 
 public class Alphabet {
 
-	public static final String UPPERCASE_LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	public static final String LOWERCASE_LETTERS = "abcdefghijklmnopqrstuvwxyz";
-	public static final String NUMBERS = "1234567890";
-	public static final String SYMBOLS = "!@#$%^&*()-_=+\\/~?";
+    protected static final String UPPERCASE_LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    protected static final String LOWERCASE_LETTERS = "abcdefghijklmnopqrstuvwxyz";
+    protected static final String NUMBERS = "1234567890";
+    protected static final String SYMBOLS = "!@#$%^&*()-_=+\\/~?";
 
 	private final StringBuilder pool;
 
