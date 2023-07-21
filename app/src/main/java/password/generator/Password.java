@@ -1,6 +1,8 @@
 package password.generator;
 
 
+import java.util.Random;
+
 public class Password {
     String Value;
     int Length;
@@ -68,6 +70,15 @@ public class Password {
 
         return Score;
     }
+    private static int getRandomNumberInRange(int min, int max) {
+        Random random = new Random();    // Initialize a Random instance
+        int randomNum;                   // Declare the integer to store random number
+        randomNum = random.nextInt();    // Generate random integer
+        randomNum = randomNum % (max - min);    // Get the remainder of dividing the random integer by the range
+        randomNum = Math.abs(randomNum); // Make sure the number is not negative
+        randomNum = randomNum + min;     // Map the number to the desired range
+        return randomNum;                // Return the random number
+    }
 
     public String calculateScore() {
         int Score = this.PasswordStrength();
@@ -82,6 +93,9 @@ public class Password {
             return "This is a weak password :( definitely find a new one";
         }
     }
+
+
+
 
     @Override
     public String toString() {
