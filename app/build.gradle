@@ -26,10 +26,14 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClass = 'password.generator.App'
+    mainClass = 'password.generator.Main'
 }
 
 tasks.named('test') {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
+}
+
+run {
+    standardInput = System.in
 }

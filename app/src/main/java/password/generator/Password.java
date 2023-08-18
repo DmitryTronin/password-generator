@@ -1,5 +1,6 @@
 package password.generator;
 
+
 public class Password {
     String Value;
     int Length;
@@ -78,7 +79,7 @@ public class Password {
 
     public String calculateScore() {
         int Score = this.PasswordStrength();
-
+                
         if (Score == 6) {
             return "This is a very good password :D check the Useful Information section to make sure it satisfies the guidelines";
         } else if (Score >= 4) {
@@ -88,6 +89,7 @@ public class Password {
         } else {
             return "This is a weak password :( definitely find a new one";
         }
+
     }
 
     @Override
