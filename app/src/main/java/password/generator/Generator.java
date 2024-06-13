@@ -3,7 +3,6 @@ package password.generator;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-
 public class Generator {
     Alphabet alphabet;
     public static Scanner keyboard;

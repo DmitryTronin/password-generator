@@ -10,7 +10,6 @@ public class Alphabet {
 
     private final StringBuilder pool;
 
-
     public Alphabet(boolean uppercaseIncluded, boolean lowercaseIncluded, boolean numbersIncluded, boolean specialCharactersIncluded) {
 
         pool = new StringBuilder();
