@@ -79,7 +79,7 @@ public class Password {
 
     public String calculateScore() {
         int Score = this.PasswordStrength();
-                
+
         if (Score == 6) {
             return "This is a very good password :D check the Useful Information section to make sure it satisfies the guidelines";
         } else if (Score >= 4) {

@@ -82,15 +82,15 @@ public class Generator {
     private void printUsefulInfo() {
         String usefulInfo = """
 
-                Use a minimum password length of 8 or more characters if permitted.
-                Include lowercase and uppercase alphabetic characters, numbers and symbols if permitted.
-                Generate passwords randomly where feasible.
-                Avoid using the same password twice (e.g., across multiple user accounts and/or software systems).
-                Avoid character repetition, keyboard patterns, dictionary words, letter or number sequences,
-                usernames, relative or pet names, romantic links (current or past) and biographical information (e.g., ID numbers, ancestors' names or dates).
-                Avoid using information that the user's colleagues and/or acquaintances might know to be associated with the user.
-                Do not use passwords which consist wholly of any simple combination of the aforementioned weak components.
-                """;
+            Use a minimum password length of 8 or more characters if permitted.
+            Include lowercase and uppercase alphabetic characters, numbers and symbols if permitted.
+            Generate passwords randomly where feasible.
+            Avoid using the same password twice (e.g., across multiple user accounts and/or software systems).
+            Avoid character repetition, keyboard patterns, dictionary words, letter or number sequences,
+            usernames, relative or pet names, romantic links (current or past) and biographical information (e.g., ID numbers, ancestors' names or dates).
+            Avoid using information that the user's colleagues and/or acquaintances might know to be associated with the user.
+            Do not use passwords which consist wholly of any simple combination of the aforementioned weak components.
+            """;
 
         System.out.println(usefulInfo);
         printMenu();
@@ -151,7 +151,7 @@ public class Generator {
             //No Pool Selected
             if (!IncludeUpper && !IncludeLower && !IncludeNum && !IncludeSym) {
                 System.out.println("You have selected no characters to generate your " +
-                        "password, at least one of your answers should be Yes\n");
+                    "password, at least one of your answers should be Yes\n");
                 correctParams = true;
             }
 
