@@ -20,11 +20,9 @@ public class GeneratorTest {
 
     @AfterEach
     public void tearDown() {
-        // Cleanup code if needed
     }
 
     @Test
-    @Disabled
     @DisplayName("GeneratePassword should generate a password of the correct length")
     public void testGeneratePassword_length() {
         generator = new Generator(true, true, true, true);
@@ -33,7 +31,6 @@ public class GeneratorTest {
     }
 
     @Test
-    @Disabled
     @DisplayName("GeneratePassword should throw an exception for non-positive length")
     public void testGeneratePassword_invalidLength() {
         generator = new Generator(true, true, true, true);
@@ -41,7 +38,6 @@ public class GeneratorTest {
     }
 
     @Test
-    @Disabled
     @DisplayName("Main loop should print menu and handle correct input")
     public void testMainLoop() {
         Mockito.when(scannerMock.nextLine()).thenReturn("4");
@@ -50,6 +46,5 @@ public class GeneratorTest {
         generator.mainLoop();
 
         Mockito.verify(scannerMock, Mockito.times(1)).nextLine();
-        // Additional assertions can be added to check printed output or other side effects
-    }
+    
 }

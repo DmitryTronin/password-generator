@@ -29,21 +29,15 @@ public class Generator {
                 System.err.println("Sorry, can't parse input. Select one of the available commands.");
                 printMenu();
                 if (keyboard.hasNext()) {
-                    keyboard.nextLine(); //consume the wrong input
+                    keyboard.nextLine();
                 }
                 continue;
             }
 
             switch (userOption) {
-                case "1" -> {
-                    requestPassword();
-                }
-                case "2" -> {
-                    checkPassword();
-                }
-                case "3" -> {
-                    printUsefulInfo();
-                }
+                case "1" -> requestPassword();
+                case "2" -> checkPassword();
+                case "3" -> printUsefulInfo();
                 case "4" -> printQuitMessage();
 
                 default -> {
@@ -158,7 +152,7 @@ public class Generator {
         } while (correctParams);
 
         System.out.println("Great! Now enter the length of the password");
-        int length = 0;
+        int length;
         while (true) {
             try {
                 length = keyboard.nextInt();
