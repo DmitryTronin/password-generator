@@ -46,5 +46,5 @@ public class GeneratorTest {
         generator.mainLoop();
 
         Mockito.verify(scannerMock, Mockito.times(1)).nextLine();
-    
+    }
 }
