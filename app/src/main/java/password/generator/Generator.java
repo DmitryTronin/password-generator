@@ -9,7 +9,7 @@ public class Generator {
     public static Scanner keyboard;
 
     public Generator(Scanner scanner) {
-        keyboard = scanner;
+        keyboard = scanner != null ? scanner : new Scanner(System.in);
     }
 
     public Generator(boolean IncludeUpper, boolean IncludeLower, boolean IncludeNum, boolean IncludeSym) {
@@ -21,7 +21,6 @@ public class Generator {
         printMenu();
 
         String userOption = "-1";
-        keyboard = new Scanner(System.in);
         while (!userOption.equals("4")) {
             try {
                 userOption = keyboard.nextLine().trim();
@@ -100,7 +99,7 @@ public class Generator {
         boolean correctParams;
 
         System.out.println();
-        System.out.println("Password Generator. Please answer the following questions by Y(es) or N(o) \n");
+        System.out.println("Password Generator. Please answer the following questions by Y(es), N(o), or type 'exit' to quit \n");
 
         do {
             String input;
@@ -109,6 +108,10 @@ public class Generator {
             do {
                 System.out.println("\nDo you want Lowercase letters \"abcd...\" to be used? ");
                 input = keyboard.next();
+                if (input == null || input.equalsIgnoreCase("exit")) {
+                    System.out.println("Exiting password generation.");
+                    return; // Exit gracefully
+                }
                 System.out.println("Your said: " + input); // Printing user's input
                 PasswordRequestError(input);
             } while (!input.equalsIgnoreCase("yes") && !input.equalsIgnoreCase("no") && !input.equalsIgnoreCase("y") && !input.equalsIgnoreCase("n"));
@@ -118,6 +121,10 @@ public class Generator {
             do {
                 System.out.println("\nDo you want Uppercase letters \"ABCD...\" to be used? ");
                 input = keyboard.next();
+                if (input == null || input.equalsIgnoreCase("exit")) {
+                    System.out.println("Exiting password generation.");
+                    return; // Exit gracefully
+                }
                 System.out.println("Your said: " + input); // Printing user's input
                 PasswordRequestError(input);
             } while (!input.equalsIgnoreCase("yes") && !input.equalsIgnoreCase("no") && !input.equalsIgnoreCase("y") && !input.equalsIgnoreCase("n"));
@@ -127,6 +134,10 @@ public class Generator {
             do {
                 System.out.println("\nDo you want Numbers \"1234...\" to be used? ");
                 input = keyboard.next();
+                if (input == null || input.equalsIgnoreCase("exit")) {
+                    System.out.println("Exiting password generation.");
+                    return; // Exit gracefully
+                }
                 System.out.println("Your said: " + input); // Printing user's input
                 PasswordRequestError(input);
             } while (!input.equalsIgnoreCase("yes") && !input.equalsIgnoreCase("no") && !input.equalsIgnoreCase("y") && !input.equalsIgnoreCase("n"));
@@ -136,13 +147,16 @@ public class Generator {
             do {
                 System.out.println("\nDo you want Symbols \"!@#$...\" to be used? ");
                 input = keyboard.next();
+                if (input == null || input.equalsIgnoreCase("exit")) {
+                    System.out.println("Exiting password generation.");
+                    return; // Exit gracefully
+                }
                 System.out.println("Your said: " + input); // Printing user's input
                 PasswordRequestError(input);
             } while (!input.equalsIgnoreCase("yes") && !input.equalsIgnoreCase("no") && !input.equalsIgnoreCase("y") && !input.equalsIgnoreCase("n"));
 
             if (isInclude(input)) IncludeSym = true;
 
-            //No Pool Selected
             if (!IncludeUpper && !IncludeLower && !IncludeNum && !IncludeSym) {
                 System.out.println("You have selected no characters to generate your " +
                     "password, at least one of your answers should be Yes\n");
@@ -169,6 +183,7 @@ public class Generator {
 
         System.out.println("Your generated password: " + password);
     }
+
 
     private boolean isInclude(String Input) {
         return Input.equalsIgnoreCase("yes") || Input.equalsIgnoreCase("y");

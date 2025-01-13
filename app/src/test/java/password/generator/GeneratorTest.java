@@ -20,6 +20,8 @@ public class GeneratorTest {
 
     @AfterEach
     public void tearDown() {
+        generator = null;
+        scannerMock = null;
     }
 
     @Test
@@ -40,11 +42,18 @@ public class GeneratorTest {
     @Test
     @DisplayName("Main loop should print menu and handle correct input")
     public void testMainLoop() {
-        Mockito.when(scannerMock.nextLine()).thenReturn("4");
-        generator = new Generator(scannerMock);
+        Mockito.when(scannerMock.nextLine())
+            .thenReturn("1", "4"); // Simulate valid menu inputs: "1" (Password Generator), then "4" (Exit)
+        Mockito.when(scannerMock.next())
+            .thenReturn("yes", "yes", "yes", "yes"); // Simulate "yes" for all character pool prompts
+        Mockito.when(scannerMock.nextInt())
+            .thenReturn(8); // Simulate valid password length input
 
+        generator = new Generator(scannerMock);
         generator.mainLoop();
 
-        Mockito.verify(scannerMock, Mockito.times(1)).nextLine();
+        Mockito.verify(scannerMock, Mockito.times(3)).nextLine(); // Verify "nextLine" is called for menu inputs
+        Mockito.verify(scannerMock, Mockito.atLeast(4)).next(); // Verify "next" is called for character pool prompts
+        Mockito.verify(scannerMock, Mockito.times(1)).nextInt(); // Verify "nextInt" is called for password length
     }
 }
