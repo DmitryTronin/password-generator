@@ -130,7 +130,7 @@ public class Generator {
             } while (!input.equalsIgnoreCase("yes") && !input.equalsIgnoreCase("no") && !input.equalsIgnoreCase("y") && !input.equalsIgnoreCase("n"));
 
             if (isInclude(input)) IncludeUpper = true;
-
+            
             do {
                 System.out.println("\nDo you want Numbers \"1234...\" to be used? ");
                 input = keyboard.next();
