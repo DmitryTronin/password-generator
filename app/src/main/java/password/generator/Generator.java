@@ -170,6 +170,10 @@ public class Generator {
         while (true) {
             try {
                 length = keyboard.nextInt();
+                if (length <= 0) {
+                    System.out.println("Invalid input. Password length must be greater than 0.");
+                    continue;
+                }
                 break;
             } catch (InputMismatchException e) {
                 keyboard.nextLine();  // to consume the incorrect token
