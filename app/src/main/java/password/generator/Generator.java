@@ -17,7 +17,8 @@ public class Generator {
     }
 
     public void mainLoop() {
-        System.out.println("Welcome to Password Services");
+        System.out.println("Welcome to Password Services — where weak passwords come to get roasted.");
+        
         printMenu();
 
         String userOption = "-1";
