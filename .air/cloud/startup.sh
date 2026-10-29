@@ -14,6 +14,12 @@ fi
 export JAVA_HOME="$JDK_DIR"
 export PATH="$JAVA_HOME/bin:$PATH"
 
+# Java tooling (Gradle wrapper/dependency resolution) ignores HTTPS_PROXY; pass it explicitly.
+if [ -n "${HTTPS_PROXY:-${https_proxy:-}}" ]; then
+  px="${HTTPS_PROXY:-$https_proxy}"; px="${px#*://}"; px="${px%/}"
+  export JAVA_TOOL_OPTIONS="${JAVA_TOOL_OPTIONS:-} -Dhttp.proxyHost=${px%:*} -Dhttp.proxyPort=${px##*:} -Dhttps.proxyHost=${px%:*} -Dhttps.proxyPort=${px##*:} -Dhttp.nonProxyHosts=localhost|127.0.0.1"
+fi
+
 # Prime Gradle distribution, dependencies and build outputs.
 bash ./gradlew --no-daemon build
 
