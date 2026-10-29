@@ -15,11 +15,11 @@ export JAVA_HOME="$JDK_DIR"
 export PATH="$JAVA_HOME/bin:$PATH"
 
 # Prime Gradle distribution, dependencies and build outputs.
-./gradlew --no-daemon build
+bash ./gradlew --no-daemon build
 
 healthcheck() {
   # Real tasks compile and run unit tests: assert that works.
-  ./gradlew --no-daemon test --rerun-tasks
+  bash ./gradlew --no-daemon test --rerun-tasks
 }
 
 healthcheck
